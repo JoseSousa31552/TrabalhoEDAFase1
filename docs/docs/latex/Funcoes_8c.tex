@@ -1,0 +1,222 @@
+\doxysection{/home/m800/\+EDATR/sorce/\+Funcoes.c File Reference}
+\hypertarget{Funcoes_8c}{}\label{Funcoes_8c}\index{/home/m800/EDATR/sorce/Funcoes.c@{/home/m800/EDATR/sorce/Funcoes.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$malloc.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include "{}Structs.\+h"{}}\newline
+{\ttfamily \#include "{}ASSFunco.\+h"{}}\newline
+Include dependency graph for Funcoes.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Funcoes_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structantena}{antena}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{Funcoes_8c_aed2c84b02a783a3f50f0f41b822df088}{Criar\+Antena}} (int coluna, int linha, char frequencia)
+\item 
+\mbox{\hyperlink{structantena}{antena}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{Funcoes_8c_aa12397df290bbca0640de6f5e705b9c3}{Carregar\+Antenas\+Do\+Ficheiro}} (const char \texorpdfstring{$\ast$}{*}nome\+\_\+ficheiro)
+\item 
+\mbox{\hyperlink{structantena}{antena}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{Funcoes_8c_a5563db065d9d04d16b0eb93b7a3215ab}{procurarantena}} (\mbox{\hyperlink{structantena}{antena}} \texorpdfstring{$\ast$}{*}h, int l, int c)
+\item 
+\mbox{\hyperlink{structantena}{antena}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{Funcoes_8c_a29e660b4a983ae0183264656f0eba91e}{insere\+Ordenado}} (\mbox{\hyperlink{structantena}{antena}} \texorpdfstring{$\ast$}{*}inicio, \mbox{\hyperlink{structantena}{antena}} \texorpdfstring{$\ast$}{*}novo)
+\item 
+\mbox{\hyperlink{structantena}{antena}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{Funcoes_8c_aa30ec65a0274d55b77b309af662dfdf4}{removerantena}} (\mbox{\hyperlink{structantena}{antena}} \texorpdfstring{$\ast$}{*}h, int linha, int coluna)
+\item 
+void \mbox{\hyperlink{Funcoes_8c_af5fa7c61928ea58645dec01b2dc3e90a}{mostrar\+Matriz\+Antenas}} (\mbox{\hyperlink{structantena}{antena}} \texorpdfstring{$\ast$}{*}lista)
+\item 
+void \mbox{\hyperlink{Funcoes_8c_a8cfc49e24f2fc58140d4f724cfa96d9c}{libertar\+Lista\+Antenas}} (\mbox{\hyperlink{structantena}{antena}} \texorpdfstring{$\ast$}{*}lista)
+\item 
+\mbox{\hyperlink{structnefasto}{nefasto}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{Funcoes_8c_a203f50180712471c0a23ad62cb0b91a6}{criar\+Efeito\+Nefasto}} (int x, int y)
+\item 
+\mbox{\hyperlink{structnefasto}{nefasto}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{Funcoes_8c_ab1d9aa3bdfe9adf6c29d4340dc145d17}{calcular\+Efeito\+Nefasto\+Final}} (\mbox{\hyperlink{structantena}{antena}} \texorpdfstring{$\ast$}{*}lista)
+\item 
+void \mbox{\hyperlink{Funcoes_8c_a6755e8b267425c40c7f87764fbd9d5f2}{mostrar\+Matriz\+Nefastos}} (\mbox{\hyperlink{structantena}{antena}} \texorpdfstring{$\ast$}{*}lista\+\_\+antenas, \mbox{\hyperlink{structnefasto}{nefasto}} \texorpdfstring{$\ast$}{*}lista\+\_\+nefastos)
+\item 
+void \mbox{\hyperlink{Funcoes_8c_a8ea15c78a461ebc676b1a63f66f88a61}{libertar\+Lista\+Nefasto}} (\mbox{\hyperlink{structnefasto}{nefasto}} \texorpdfstring{$\ast$}{*}lnefasto)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{Funcoes_8c_ac54f683a32aed3683eba985705dbfc8b}\label{Funcoes_8c_ac54f683a32aed3683eba985705dbfc8b} 
+int {\bfseries MAX\+\_\+\+COLUNAS} = 0
+\item 
+\Hypertarget{Funcoes_8c_a4877dd376e1cc9d30a57bcad8c77b094}\label{Funcoes_8c_a4877dd376e1cc9d30a57bcad8c77b094} 
+int {\bfseries MAX\+\_\+\+LINHAS} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+José 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+March 2025 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{Funcoes_8c_ab1d9aa3bdfe9adf6c29d4340dc145d17}\label{Funcoes_8c_ab1d9aa3bdfe9adf6c29d4340dc145d17} 
+\index{Funcoes.c@{Funcoes.c}!calcularEfeitoNefastoFinal@{calcularEfeitoNefastoFinal}}
+\index{calcularEfeitoNefastoFinal@{calcularEfeitoNefastoFinal}!Funcoes.c@{Funcoes.c}}
+\doxysubsubsection{\texorpdfstring{calcularEfeitoNefastoFinal()}{calcularEfeitoNefastoFinal()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structnefasto}{nefasto}} \texorpdfstring{$\ast$}{*} calcular\+Efeito\+Nefasto\+Final (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structantena}{antena}} \texorpdfstring{$\ast$}{*}}]{lista }\end{DoxyParamCaption})}
+
+calcular\+Efeito\+Nefasto\+Final 
+\begin{DoxyParams}{Parameters}
+{\em lista} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{Funcoes_8c_aa12397df290bbca0640de6f5e705b9c3}\label{Funcoes_8c_aa12397df290bbca0640de6f5e705b9c3} 
+\index{Funcoes.c@{Funcoes.c}!CarregarAntenasDoFicheiro@{CarregarAntenasDoFicheiro}}
+\index{CarregarAntenasDoFicheiro@{CarregarAntenasDoFicheiro}!Funcoes.c@{Funcoes.c}}
+\doxysubsubsection{\texorpdfstring{CarregarAntenasDoFicheiro()}{CarregarAntenasDoFicheiro()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structantena}{antena}} \texorpdfstring{$\ast$}{*} Carregar\+Antenas\+Do\+Ficheiro (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{nome\+\_\+ficheiro }\end{DoxyParamCaption})}
+
+Carregar\+Antenas\+Do\+Ficheiro 
+\begin{DoxyParams}{Parameters}
+{\em nome\+\_\+ficheiro} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{Funcoes_8c_aed2c84b02a783a3f50f0f41b822df088}\label{Funcoes_8c_aed2c84b02a783a3f50f0f41b822df088} 
+\index{Funcoes.c@{Funcoes.c}!CriarAntena@{CriarAntena}}
+\index{CriarAntena@{CriarAntena}!Funcoes.c@{Funcoes.c}}
+\doxysubsubsection{\texorpdfstring{CriarAntena()}{CriarAntena()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structantena}{antena}} \texorpdfstring{$\ast$}{*} Criar\+Antena (\begin{DoxyParamCaption}\item[{int}]{coluna,  }\item[{int}]{linha,  }\item[{char}]{frequencia }\end{DoxyParamCaption})}
+
+Criar\+Antena 
+\begin{DoxyParams}{Parameters}
+{\em coluna} & \\
+\hline
+{\em linha} & \\
+\hline
+{\em frequencia} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{Funcoes_8c_a203f50180712471c0a23ad62cb0b91a6}\label{Funcoes_8c_a203f50180712471c0a23ad62cb0b91a6} 
+\index{Funcoes.c@{Funcoes.c}!criarEfeitoNefasto@{criarEfeitoNefasto}}
+\index{criarEfeitoNefasto@{criarEfeitoNefasto}!Funcoes.c@{Funcoes.c}}
+\doxysubsubsection{\texorpdfstring{criarEfeitoNefasto()}{criarEfeitoNefasto()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structnefasto}{nefasto}} \texorpdfstring{$\ast$}{*} criar\+Efeito\+Nefasto (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+criar\+Efeito\+Nefasto 
+\begin{DoxyParams}{Parameters}
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{Funcoes_8c_a29e660b4a983ae0183264656f0eba91e}\label{Funcoes_8c_a29e660b4a983ae0183264656f0eba91e} 
+\index{Funcoes.c@{Funcoes.c}!insereOrdenado@{insereOrdenado}}
+\index{insereOrdenado@{insereOrdenado}!Funcoes.c@{Funcoes.c}}
+\doxysubsubsection{\texorpdfstring{insereOrdenado()}{insereOrdenado()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structantena}{antena}} \texorpdfstring{$\ast$}{*} insere\+Ordenado (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structantena}{antena}} \texorpdfstring{$\ast$}{*}}]{inicio,  }\item[{\mbox{\hyperlink{structantena}{antena}} \texorpdfstring{$\ast$}{*}}]{novo }\end{DoxyParamCaption})}
+
+insere\+Ordenado 
+\begin{DoxyParams}{Parameters}
+{\em inicio} & \\
+\hline
+{\em novo} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{Funcoes_8c_a8cfc49e24f2fc58140d4f724cfa96d9c}\label{Funcoes_8c_a8cfc49e24f2fc58140d4f724cfa96d9c} 
+\index{Funcoes.c@{Funcoes.c}!libertarListaAntenas@{libertarListaAntenas}}
+\index{libertarListaAntenas@{libertarListaAntenas}!Funcoes.c@{Funcoes.c}}
+\doxysubsubsection{\texorpdfstring{libertarListaAntenas()}{libertarListaAntenas()}}
+{\footnotesize\ttfamily void libertar\+Lista\+Antenas (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structantena}{antena}} \texorpdfstring{$\ast$}{*}}]{lista }\end{DoxyParamCaption})}
+
+Função para libertar a memoria 
+\begin{DoxyParams}{Parameters}
+{\em lista} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{Funcoes_8c_a8ea15c78a461ebc676b1a63f66f88a61}\label{Funcoes_8c_a8ea15c78a461ebc676b1a63f66f88a61} 
+\index{Funcoes.c@{Funcoes.c}!libertarListaNefasto@{libertarListaNefasto}}
+\index{libertarListaNefasto@{libertarListaNefasto}!Funcoes.c@{Funcoes.c}}
+\doxysubsubsection{\texorpdfstring{libertarListaNefasto()}{libertarListaNefasto()}}
+{\footnotesize\ttfamily void libertar\+Lista\+Nefasto (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnefasto}{nefasto}} \texorpdfstring{$\ast$}{*}}]{lnefasto }\end{DoxyParamCaption})}
+
+libertar\+Lista\+Nefasto Função para libertar a memoria 
+\begin{DoxyParams}{Parameters}
+{\em lista} & \\
+\hline
+\end{DoxyParams}
+\Hypertarget{Funcoes_8c_af5fa7c61928ea58645dec01b2dc3e90a}\label{Funcoes_8c_af5fa7c61928ea58645dec01b2dc3e90a} 
+\index{Funcoes.c@{Funcoes.c}!mostrarMatrizAntenas@{mostrarMatrizAntenas}}
+\index{mostrarMatrizAntenas@{mostrarMatrizAntenas}!Funcoes.c@{Funcoes.c}}
+\doxysubsubsection{\texorpdfstring{mostrarMatrizAntenas()}{mostrarMatrizAntenas()}}
+{\footnotesize\ttfamily void mostrar\+Matriz\+Antenas (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structantena}{antena}} \texorpdfstring{$\ast$}{*}}]{lista }\end{DoxyParamCaption})}
+
+mostrar\+Matriz\+Antenas 
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+antenas} & Lista de antenas carregadas \\
+\hline
+\end{DoxyParams}
+\Hypertarget{Funcoes_8c_a6755e8b267425c40c7f87764fbd9d5f2}\label{Funcoes_8c_a6755e8b267425c40c7f87764fbd9d5f2} 
+\index{Funcoes.c@{Funcoes.c}!mostrarMatrizNefastos@{mostrarMatrizNefastos}}
+\index{mostrarMatrizNefastos@{mostrarMatrizNefastos}!Funcoes.c@{Funcoes.c}}
+\doxysubsubsection{\texorpdfstring{mostrarMatrizNefastos()}{mostrarMatrizNefastos()}}
+{\footnotesize\ttfamily void mostrar\+Matriz\+Nefastos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structantena}{antena}} \texorpdfstring{$\ast$}{*}}]{lista\+\_\+antenas,  }\item[{\mbox{\hyperlink{structnefasto}{nefasto}} \texorpdfstring{$\ast$}{*}}]{lista\+\_\+nefastos }\end{DoxyParamCaption})}
+
+mostrar\+Matriz\+Com\+Nefastos Exibe a matriz mostrando antenas e pontos nefastos 
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+antenas} & Lista de antenas \\
+\hline
+{\em lista\+\_\+nefastos} & Lista de pontos nefastos \\
+\hline
+\end{DoxyParams}
+\Hypertarget{Funcoes_8c_a5563db065d9d04d16b0eb93b7a3215ab}\label{Funcoes_8c_a5563db065d9d04d16b0eb93b7a3215ab} 
+\index{Funcoes.c@{Funcoes.c}!procurarantena@{procurarantena}}
+\index{procurarantena@{procurarantena}!Funcoes.c@{Funcoes.c}}
+\doxysubsubsection{\texorpdfstring{procurarantena()}{procurarantena()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structantena}{antena}} \texorpdfstring{$\ast$}{*} procurarantena (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structantena}{antena}} \texorpdfstring{$\ast$}{*}}]{h,  }\item[{int}]{l,  }\item[{int}]{c }\end{DoxyParamCaption})}
+
+procurarantena 
+\begin{DoxyParams}{Parameters}
+{\em h} & \\
+\hline
+{\em l} & \\
+\hline
+{\em c} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{Funcoes_8c_aa30ec65a0274d55b77b309af662dfdf4}\label{Funcoes_8c_aa30ec65a0274d55b77b309af662dfdf4} 
+\index{Funcoes.c@{Funcoes.c}!removerantena@{removerantena}}
+\index{removerantena@{removerantena}!Funcoes.c@{Funcoes.c}}
+\doxysubsubsection{\texorpdfstring{removerantena()}{removerantena()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structantena}{antena}} \texorpdfstring{$\ast$}{*} removerantena (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structantena}{antena}} \texorpdfstring{$\ast$}{*}}]{h,  }\item[{int}]{linha,  }\item[{int}]{coluna }\end{DoxyParamCaption})}
+
+removerantena 
+\begin{DoxyParams}{Parameters}
+{\em h} & \\
+\hline
+{\em linha} & \\
+\hline
+{\em coluna} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
