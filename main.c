@@ -31,6 +31,7 @@ int main() {
             if (lista_antenas != NULL) {
                 printf("Antenas carregadas com sucesso!\n");
             }
+            else return 1;
             break;
 
         case 2:
@@ -47,7 +48,7 @@ int main() {
                 printf("Nenhuma antena carregada ainda.\n");
             }
             else {
-                libertarListaNefasto(lista_nefastos); // Libera lista anterior
+                
                 lista_nefastos = calcularEfeitoNefastoFinal(lista_antenas);
                 mostrarMatrizNefastos(lista_antenas, lista_nefastos);
             }
@@ -76,8 +77,14 @@ int main() {
             printf("Digite a coluna: ");
             scanf("%d", &coluna);
 
-            lista_antenas = removerantena(lista_antenas, linha, coluna);
-            printf("Antena removida (se existia).\n");
+            if (procurarantena(lista_antenas, linha, coluna) != NULL) {
+                
+                lista_antenas = removerantena(lista_antenas, linha, coluna);
+                printf("Antena removida.\n");
+            }
+            else{
+                printf("A antena nao existe\n");
+            }
             break;
         }
 
