@@ -2,7 +2,7 @@
  * \file   Funcoes.c
  * \brief
  *
- * \author José
+ * \author JosÃ©
  * \date   March 2025
  *********************************************************************/
 
@@ -23,18 +23,18 @@ int MAX_LINHAS = 0;
  * \param coluna
  * \param linha
  * \param frequencia
- * \return 
+ * \return
  */
 antena* CriarAntena(int coluna, int linha, char frequencia) {
-	antena* aux;
-	aux = (antena*)malloc(sizeof(antena));
-	if (aux != NULL) {
-		aux->coluna = coluna;
-		aux->linha = linha;
-		aux->frequencia = frequencia;
-		aux->next = NULL;
-	}
-	return aux;
+    antena* aux;
+    aux = (antena*)malloc(sizeof(antena));
+    if (aux != NULL) {
+        aux->coluna = coluna;
+        aux->linha = linha;
+        aux->frequencia = frequencia;
+        aux->next = NULL;
+    }
+    return aux;
 
 
 }
@@ -43,7 +43,7 @@ antena* CriarAntena(int coluna, int linha, char frequencia) {
  * .
  * CarregarAntenasDoFicheiro
  * \param nome_ficheiro
- * \return 
+ * \return
  */
 antena* CarregarAntenasDoFicheiro(const char* nome_ficheiro) {
     FILE* fp = fopen(nome_ficheiro, "r");
@@ -62,7 +62,7 @@ antena* CarregarAntenasDoFicheiro(const char* nome_ficheiro) {
         int comp = strlen(linha);
 
 
-        if (linha[comp - 1] == '\n') {
+        if (linha[comp - 1] == '\n' || linha[comp - 1] == '\r') {      //testar \r
             linha[comp - 1] = '\0';
             comp--;
         }
@@ -104,17 +104,17 @@ antena* CarregarAntenasDoFicheiro(const char* nome_ficheiro) {
  * \param h
  * \param l
  * \param c
- * \return 
+ * \return
  */
 antena* procurarantena(antena* h, int l, int c) {
     antena* aux = h;
     while (aux != NULL) {
         if (aux->linha == l && aux->coluna == c) {
-            return aux; 
+            return aux;
         }
         aux = aux->next;
     }
-    return NULL; 
+    return NULL;
 }
 
 
@@ -123,7 +123,7 @@ antena* procurarantena(antena* h, int l, int c) {
  * insereOrdenado
  * \param inicio
  * \param novo
- * \return 
+ * \return
  */
 antena* insereOrdenado(antena* inicio, antena* novo) {
 
@@ -150,7 +150,7 @@ antena* insereOrdenado(antena* inicio, antena* novo) {
     antena* atual = inicio;
     antena* anterior = atual;
 
-    while ((atual->linha < novo->linha ||(atual->linha == novo->linha && atual->coluna < novo->coluna))&& atual->next != NULL) {
+    while ((atual->linha < novo->linha || (atual->linha == novo->linha && atual->coluna < novo->coluna)) && atual->next != NULL) {
 
         anterior = atual;
         atual = atual->next;
@@ -159,17 +159,16 @@ antena* insereOrdenado(antena* inicio, antena* novo) {
     if ((atual->linha == novo->linha && atual->coluna > novo->coluna)) {
         novo->next = atual;
         anterior->next = novo;
+        return inicio;
 
     }
-    
-    else if (atual->linha < novo->linha && atual->coluna < novo->coluna) {
+
+    if (atual->linha < novo->linha && atual->coluna < novo->coluna) {
         atual->next = novo;
+        return inicio;
 
     }
-    else {
-        novo->next = atual;
-        anterior->next = novo;
-    }
+   
     return inicio;
 }
 
@@ -181,7 +180,7 @@ antena* insereOrdenado(antena* inicio, antena* novo) {
  * \param h
  * \param linha
  * \param coluna
- * \return 
+ * \return
  */
 antena* removerantena(antena* h, int linha, int coluna) {
 
@@ -190,7 +189,7 @@ antena* removerantena(antena* h, int linha, int coluna) {
     }
     if (procurarantena(h, linha, coluna) == NULL) return NULL;
 
-    
+
 
     if (h->linha == linha && h->coluna == coluna) {
         antena* aux = h;
@@ -198,7 +197,7 @@ antena* removerantena(antena* h, int linha, int coluna) {
         free(aux);
         return h;
     }
-  
+
     antena* aux = h;
     antena* auxAnt = aux;
 
@@ -207,7 +206,7 @@ antena* removerantena(antena* h, int linha, int coluna) {
         aux = aux->next;
     }
 
-    if (aux ) {
+    if (aux) {
         auxAnt->next = aux->next;
         free(aux);
     }
@@ -227,10 +226,10 @@ void mostrarMatrizAntenas(antena* lista) {
         for (int c = 0; c < MAX_COLUNAS; c++) {
             antena* ant = procurarantena(lista, l, c);
             if (ant != NULL) {
-                printf("%c ", ant->frequencia);  
+                printf("%c ", ant->frequencia);
             }
             else {
-                printf(". ");  
+                printf(". ");
             }
         }
         printf("\n");
@@ -239,17 +238,18 @@ void mostrarMatrizAntenas(antena* lista) {
 
 /**
  * .
- * Função para libertar a memoria
+ * FunÃ§Ã£o para libertar a memoria
  * \param lista
  */
-void libertarListaAntenas(antena* lista) {
+antena* libertarListaAntenas(antena* lista) {
     antena* atual = lista;
 
     while (atual != NULL) {
-        antena* proximo = atual->next;  
-        free(atual);                   
-        atual = proximo;               
+        antena* proximo = atual->next;
+        free(atual);
+        atual = proximo;
     }
+    return lista;
 }
 
 /**
@@ -257,7 +257,7 @@ void libertarListaAntenas(antena* lista) {
  * criarEfeitoNefasto
  * \param x
  * \param y
- * \return 
+ * \return
  */
 nefasto* criarEfeitoNefasto(int x, int y) {
     nefasto* novo = (nefasto*)malloc(sizeof(nefasto));
@@ -273,38 +273,39 @@ nefasto* criarEfeitoNefasto(int x, int y) {
  * .
  * calcularEfeitoNefastoFinal
  * \param lista
- * \return 
+ * \return
  */
 nefasto* calcularEfeitoNefastoFinal(antena* lista) {
     nefasto* nefastos = NULL;
     antena* atual = lista;
+    
 
     while (atual != NULL) {
         antena* comparar = atual->next;
 
         while (comparar != NULL) {
             if (atual->frequencia == comparar->frequencia) {
-                
+
                 int diff_linha = comparar->linha - atual->linha;
                 int diff_coluna = comparar->coluna - atual->coluna;
 
-                
+
                 int nefasto_linha = comparar->linha + diff_linha;
                 int nefasto_coluna = comparar->coluna + diff_coluna;
 
-                
+
                 if (nefasto_linha >= 0 && nefasto_coluna >= 0 && nefasto_linha < MAX_LINHAS && nefasto_coluna < MAX_COLUNAS) {
                     nefasto* novo = criarEfeitoNefasto(nefasto_linha, nefasto_coluna);
                     novo->next = nefastos;
                     nefastos = novo;
                 }
 
-                
+
                 nefasto_linha = atual->linha - diff_linha;
                 nefasto_coluna = atual->coluna - diff_coluna;
 
-                
-                if (nefasto_linha >= 0 && nefasto_coluna >= 0 &&nefasto_linha < MAX_LINHAS && nefasto_coluna < MAX_COLUNAS) {
+
+                if (nefasto_linha >= 0 && nefasto_coluna >= 0 && nefasto_linha < MAX_LINHAS && nefasto_coluna < MAX_COLUNAS) {
                     nefasto* novo2 = criarEfeitoNefasto(nefasto_linha, nefasto_coluna);
                     novo2->next = nefastos;
                     nefastos = novo2;
@@ -319,16 +320,15 @@ nefasto* calcularEfeitoNefastoFinal(antena* lista) {
 }
 
 
- /**
-  * .
-  * mostrarMatrizComNefastos
-  * Exibe a matriz mostrando antenas e pontos nefastos
-  * \param lista_antenas Lista de antenas
-  * \param lista_nefastos Lista de pontos nefastos
-  */
+/**
+ * .
+ * mostrarMatrizComNefastos
+ * Exibe a matriz mostrando antenas e pontos nefastos
+ * \param lista_antenas Lista de antenas
+ * \param lista_nefastos Lista de pontos nefastos
+ */
 void mostrarMatrizNefastos(antena* lista_antenas, nefasto* lista_nefastos) {
     printf("\nMatriz com Efeitos Nefastos (%dx%d):\n", MAX_LINHAS, MAX_COLUNAS);
-
     for (int l = 0; l < MAX_LINHAS; l++) {
         for (int c = 0; c < MAX_COLUNAS; c++) {
             antena* ant = procurarantena(lista_antenas, l, c);
@@ -364,7 +364,7 @@ void mostrarMatrizNefastos(antena* lista_antenas, nefasto* lista_nefastos) {
 /**
  * .
  * libertarListaNefasto
- * Função para libertar a memoria
+ * FunÃ§Ã£o para libertar a memoria
  * \param lista
  */
 void libertarListaNefasto(nefasto* lnefasto) {
@@ -376,9 +376,4 @@ void libertarListaNefasto(nefasto* lnefasto) {
         atual = proximo;
     }
 }
-
-
-
-
-
 
